@@ -5,6 +5,7 @@ int Sum_of_Digit( int N)
     int sum = 0, rem;
     if(N/10 == 0)
     {
+        printf("Final Digit is %d\n",N);
         return 0;
     }
     else
