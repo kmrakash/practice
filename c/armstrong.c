@@ -1,25 +1,39 @@
+/* A programme to Print All the Armstrong Number Upto 10000 */
+
 #include<stdio.h>
 #include<math.h>
+
 void main()
 {
-    int arm=0,test,num,rem,digit = 0;
-    printf("ENTER THE NUMBER: ");
-    scanf("%d",&num);
-    test = num;
-    while(test!=0)
+    int i, temp;
+    for(i=1;i<=10000;i++)
     {
-        test = test/10;
-        digit = digit + 1;
+        temp = i;
+        int count = 0;
+
+        /* Count Number of digit */
+
+        while(temp != 0)
+        {
+            temp = temp/10;
+            ++count;
+        }
+
+        int armstrong = 0, rem, power;
+        temp = i;
+        while(temp != 0)
+        {
+            rem = temp%10;
+            temp = temp/10;
+            
+            power = pow(rem,count);
+           
+            armstrong = armstrong + power;
+            
+            
+        }
+       
+        if(armstrong == i)
+        printf("%d\n",armstrong);
     }
-    test = num;
-    while(test!=0)
-    {
-        rem=test%10;
-        arm = arm + pow(rem , digit);
-        test= test/10;
-    }
-    if(num == arm)
-        printf("Armstrong number");
-    else
-        printf("Not An Armstrong number");
 }
