@@ -1,6 +1,7 @@
 *.exe
 *.class
 *.h
+*.out
 
 .vscode
 __pycache__
