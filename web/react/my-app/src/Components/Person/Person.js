@@ -2,7 +2,7 @@ import React from 'react';
 
 const Person = (props) => {
     return(
-    <p>My name is {props.name} , Dynamic number {Math.floor(Math.random()*30)}</p>
+    <p>My name is {props.name} , Age is {props.age}</p>
     )
 }
 
