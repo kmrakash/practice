@@ -6,9 +6,9 @@ class App extends Component{
 
   state = {
     persons: [
-      {name: 'Max', age:20},
-      {name: 'Jane', age:22},
-      {name: 'Doe', age:10}
+      {name: 'Max', age:20, id:'abc123'},
+      {name: 'Jane', age:22, id:'abc129'},
+      {name: 'Doe', age:10, id:'abd123'}
     ],
     show:false
   }
@@ -21,23 +21,39 @@ class App extends Component{
 
   }
 
+  DeleteHandler = (index) => {
+      let test = this.state.persons;
+      test.splice(index, 1);
+    this.setState({persons:test})
+  }
+
+
   render(){
+
+    const styles ={
+      backgroundColor: 'white',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor:'pointer'
+    }
 
       let person = null;
 
       if(this.state.show) {
         person = (
-          <div>
-            <Person name={this.state.persons[0].name} age={this.state.persons[0].age}/>
-            <Person name={this.state.persons[1].name} age={this.state.persons[1].age}/>
-        </div>
+         this.state.persons.map((person, index)=> <Person 
+                                                      name={person.name} 
+                                                      age={person.age} 
+                                                      key={person.id} 
+                                                      click={() => this.DeleteHandler(index)} />
+         )
         )
       }
 
     return (
       <div className="App">
        <h1>Hi , I am a react App</h1>
-       <button onClick={this.ToggleHandler}> Toggle </button>
+       <button style={styles} onClick={this.ToggleHandler}> Toggle </button>
         {person}
       </div>
     );

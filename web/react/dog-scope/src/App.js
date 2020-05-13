@@ -10,18 +10,24 @@ const stateMachine = {
     awaitingUpload:{on: {next: 'ready'}},
     ready:{on: {next: 'classifying'}, showImage: true},
     classifying:{on: {next: 'complete'}},
-    complete: {on: {next: 'awaitingUpload'}, showImage: true}
+    complete: {on: {next: 'awaitingUpload'}, showImage: true, showResults: true}
   }
 }
 
 const reducer = (currentState, event) => stateMachine.states[currentState].on[event] || stateMachine.initial;
+
+const formatList = ({className, probability}) => (
+  <li key={className}>
+    {`${className} : ${(probability * 100).toFixed(2)}%`}
+  </li>
+)
 
 function App() {
 
   const [state, dispatch] = useReducer(reducer, stateMachine.initial);
   const [model, setModel] = useState(null);
   const [imageUrl, setimageUrl] = useState(null);
-  // const [results, setResults] = useState([]);
+  const [results, setResults] = useState([]);
   const next = () => dispatch("next");
   const inputRef = useRef();
   const imageRef = useRef();
@@ -38,38 +44,48 @@ function App() {
     console.log(files.length);
     if(files.length > 0){
       console.log(files[0]);
-      const makeImageUrl = URL.createObjectURL(e.target.files[0]);
-      setimageUrl(makeImageUrl);
-    //   setimageUrl(ImageUrl);
-    
+      const url = URL.createObjectURL(e.target.files[0]);
+      setimageUrl(url);
       next();
     }
   }
 
   const Identify = async () => {
-    console.log(imageUrl);
+    
     next();
     const results = await model.classify(imageRef.current);
-    console.log(results);
+    setResults(results);
+    next();
+  }
+  const upload = () => inputRef.current.click(); 
+
+  const reset = () => {
+    setResults([]);
+    setimageUrl(null);
     next();
   }
 
   const buttonProps = {
-    initial : {text: 'Load Model', action: () => loadModel},
+    initial : {text: 'Load Model', action: loadModel},
     loading : {text: 'loading', action: () => {}},
-    awaitingUpload : {text: 'Upload a Dog Pic', action: () => inputRef.current.click()},
+    awaitingUpload : {text: 'Upload a Dog Pic', action: upload},
     ready : {text: 'Identify', action: Identify},
     classifying : {text: 'Identifying', action: () => {}},
-    complete : {text: 'Reset', action: () => {}},
+    complete : {text: 'Reset', action: reset},
   }
 
-  const { showImage = false } = stateMachine.states[state];
+  const { showImage = false , showResults= false} = stateMachine.states[state];
 
   return (
     <div className="App">
       { showImage && <img alt="Upload Preview" src={imageUrl} ref={imageRef}/>}
+      {showResults && 
+          <ul>
+          {results.map(formatList)}
+          </ul>
+      }
       <input type="file" accept="image/*" ref={inputRef} onChange={handleUpload} />
-      <button onClick={buttonProps[state].action() || (()=>{})}>{buttonProps[state].text}</button>
+      <button onClick={buttonProps[state].action || (()=>{})}>{buttonProps[state].text}</button>
     </div>
   );
 }
