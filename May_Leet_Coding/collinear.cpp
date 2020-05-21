@@ -1,3 +1,5 @@
+// Find the collinearity of three numbers
+
 #include<bits/stdc++.h>
 
 using namespace std;

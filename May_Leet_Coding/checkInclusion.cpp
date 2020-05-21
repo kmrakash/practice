@@ -1,3 +1,5 @@
+// check if s2 contains s1 
+
 #include<iostream>
 #include<string>
 #include<map>
