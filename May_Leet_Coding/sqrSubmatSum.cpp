@@ -26,7 +26,7 @@ int main(){
 		for(int col=0; col<n; col++){
 			
 			//Take the minimum number from left , top and top left and to current ending squar.
-			// skip the first column since no square matrix whose row and col are greater than 1 are present also skip whose value is zero
+			// skip the first column since no square matrix whose row and col are greater than 1 are present also skip whose value is zerope
 			if(row>0 && col>0 && matrix[row][col]>0)
 			matrix[row][col] = min(matrix[row][col-1], min(matrix[row-1][col], matrix[row-1][col-1]))+1;
 			cout << "For Row And COl: " << row << ", " << col << ", " << matrix[row][col]<<  "\n";
