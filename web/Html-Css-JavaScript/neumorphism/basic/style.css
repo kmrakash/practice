@@ -1,0 +1,87 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+/* :root{
+    var --primary-color: #fafafb;
+} */
+
+
+.container{
+    display: flex;
+    flex-direction: column;
+   align-items: center;
+    margin: 0 auto;
+    padding: 20px;
+    height: 100%;
+    background: #fafafb;
+}
+
+.basic{
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+    
+}
+
+
+.neumorphism-1, .neumorphism-2:hover{
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    border-radius: 10px;
+    background: #fafafb;
+    box-shadow:  -3px -3px 7px #ffffff73, 
+    3px 3px 5px rgba(94, 104, 121, .268);
+
+}
+
+
+
+.neumorphism-2, .neumorphism-1:hover {
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    border-radius: 10px;
+    background: #fafafb;
+    box-shadow: inset -3px -3px 7px #ffffff73, 
+                inset 3px 3px 5px rgba(94, 104, 121, .268);
+
+}
+
+.neumorphism-3{
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    background: aqua;
+    box-shadow:  -3px -3px 7px #ffffff73, 
+                 3px 3px 5px rgba(94, 104, 121, .268);
+position: relative;
+display: flex;
+justify-content: center;
+align-items: center;
+border-radius: 50%;
+}
+
+.neumorphism-3::after{
+    content: '';
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    background: #fafafb;
+    box-shadow: inset -3px -3px 7px #ffffff73, 
+                inset 3px 3px 5px rgba(94, 104, 121, .268);
+
+}
+
+.text{
+    color: #fafafb;
+    font-size: 75px;
+    font-weight: bold;
+    text-shadow:  -3px -3px 7px #ffffff73, 
+                 3px 3px 5px rgba(94, 104, 121, .268); 
+}
+
+
