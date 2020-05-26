@@ -1,12 +1,15 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
-/* :root{
-    var --primary-color: #fafafb;
-} */
 
-
+body{
+    background: rgba(214, 214, 214);
+    margin: 0 auto;
+    width: 1250px;
+}
+/*------------------------The Basic One----------------------------*/
 .container{
     display: flex;
     flex-direction: column;
@@ -75,13 +78,315 @@ border-radius: 50%;
                 inset 3px 3px 5px rgba(94, 104, 121, .268);
 
 }
-
+/*-------------------Text UI-------------------------------------------*/
 .text{
+    display: flex;
     color: #fafafb;
     font-size: 75px;
+    align-content: center;
     font-weight: bold;
     text-shadow:  -3px -3px 7px #ffffff73, 
                  3px 3px 5px rgba(94, 104, 121, .268); 
+    position: relative;
 }
+
+.text-second{
+    width: 100px;
+    height: 100px;
+    font-size: 75px;
+    background: #fafafb;
+    margin-left: 10px;
+    border-radius: 20px;
+    color: pink;
+    text-shadow: inset -3px -3px 7px #ffffff73, 
+                 inset 3px 3px 5px rgba(94, 104, 121, .268);
+    box-shadow:  -3px -3px 7px #ffffff73, 
+                  3px 3px 5px rgba(94, 104, 121, .268); 
+
+}
+
+.second{
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:#eaf3f9 ;
+}
+
+.card-1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    font-size: 100px;
+    width: 242px;
+    height: 242px; 
+    border-radius: 65px;
+    background: #eaf3f9;
+    box-shadow:  8px 8px 16px #b9c0c5, 
+                 -8px -8px 16px #ffffff;
+}
+
+/*---------------------Social Buttuns-------------------*/
+
+/* .social{
+    display: flex;
+    min-height: 100px;
+    justify-content: center;
+    align-items: center;
+} */
+
+.social-item{
+    width: 100px;
+    height: 100px;
+    position: relative;
+    border-radius: 50%;
+    background: rgba(214, 214, 214);
+    margin: 50px;
+    box-shadow: -7px -7px 20px  rgba(255, 255, 255, 0.9),
+                7px 7px 20px  rgba(0, 0, 0, 0.3);
+    transition: 0.2s;
+}
+
+.social-item:hover{
+    transform: scale(1.1);
+}
+
+.social-item:hover::before{
+    box-shadow: inset -7px -7px 20px  rgba(255, 255, 255, 1),
+                inset    7px 7px 20px  rgba(0, 0, 0, 0.3);
+}
+
+.social-item::before{
+    content: "";
+    position: absolute;
+    height: 80%;
+    width: 80%;
+    border-radius: 50%;
+    background: rgba(214, 214, 214);
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.social-item i{
+    position: absolute;
+    color: rgba(73, 192, 192);
+    font-size: 35px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: .2s;
+}
+
+.social-item i:hover{
+    font-size: 30px;
+}
+
+/*------------Normal Buttuns------------------*/
+
+.center-pos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+}
+
+.btn{
+    width: 150px;
+    margin: 20px;
+    padding: 15px 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: blue;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: rgba(214, 214, 214);
+    box-shadow: -9px -9px 23px 0 rgba(255, 255, 255, 0.7),
+                7px 7px 23px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover{
+    box-shadow: inset -9px -9px 23px 0 rgba(255, 255, 255, 0.7),
+                inset 7px 7px 23px 0 rgba(0, 0, 0, 0.2);
+}
+
+/*----------------------Progressive Bars-------------------*/
+
+.bars{
+    flex-direction: column;
+}
+
+.loader{
+    position: relative;
+    height: 20px;
+    width: 400px;
+    background: rgba(214, 214, 214);
+    margin: 20px;
+    border-radius: 20px;
+    box-shadow: inset -7px -7px 20px 0 rgba(255, 255, 255, 0.7),
+                inset 7px 7px 20px 0 rgba(0, 0, 0, 0.2);
+    
+}
+
+.l1::before{
+    content: '';
+    position: absolute;
+    background: red;
+    height: 80%;
+    left: 1%;
+    border-radius: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    animation: load1 5s linear infinite;
+}
+
+@keyframes load1{
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: 90%;
+    }
+}
+
+.l2::before{
+    content: '';
+    position: absolute;
+    height: 80%;
+    width: 30%;
+    background: blueviolet;
+    border-radius: 20px;
+    top: 50%;
+    left: 1%;
+    transform: translateY(-50%);
+    animation: load2 5s linear infinite;
+}
+
+@keyframes load2{
+    0%{
+        left: 1%;
+    }
+    50%{
+        left: 70%;
+    }
+    100%{
+        left: 1%;
+    }
+}
+
+.l3::before{
+    content: '';
+    position: absolute;
+    height: 80%;
+    left: 1%;
+    background: limegreen;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 20px;
+    animation: load3 7s linear infinite;
+}
+
+@keyframes load3{
+    0%{
+        left: 1%;
+        width: 0%;
+    }
+    25%{
+        left: 2%;
+        width: 98%;
+    }
+    50%{
+        left: 99%;
+        width: 0%;
+    }
+    75%{
+        left: 1%;
+        width: 98%;
+    }
+    100%{
+        left: 1%;
+        width: 0%;
+    }
+}
+
+/*-------------------Loading-Animation---------------------------*/
+/* .circle-loader{
+    width: 100px;
+    height: 100px;
+} */
+
+.load{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 150px;
+    margin: 20px 50px;
+    border-radius:50%;
+    background: rgba(214, 214, 214);
+    box-shadow: inset -7px -7px 10px 0 rgba(255, 255, 255, 0.5),
+                inset 7px 7px 10px 0 rgba(0, 0, 0, 0.5);
+    
+}
+
+.load::before{
+    content: '';
+    position: absolute;
+    height: 130px;
+    width: 130px;
+    background:rgba(214, 214, 214);
+    border-radius: 50% ;
+    box-shadow: -7px -7px 10px 0 rgba(255, 255, 255, 0.9),
+                7px 7px 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.load::after{
+    content: '';
+    position: absolute;
+    height: 130px;
+    width: 130px;
+    border-radius:50% ;
+    
+    
+}
+
+@keyframes rotate{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+
+.ld1::after{
+    border: 10px solid red;
+    border-right: solid 10px transparent;
+    border-top: solid 10px transparent;
+    border-left: solid 10px transparent;
+    animation: rotate 5s linear infinite;
+}
+
+.ld2::after{
+    border: 10px solid blueviolet;
+    border-right: solid 10px transparent;
+    border-top: solid 10px transparent;
+    border-left: solid 10px transparent;
+    animation: rotate 3s linear infinite;
+}
+
+.ld3::after{
+    border: 10px solid yellow;
+    border-right: solid 10px transparent;
+    border-top: solid 10px transparent;
+    border-left: solid 10px transparent;
+    animation: rotate 7s linear infinite;
+}
+
 
 
