@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Html-Forms</title>
+</head>
+<body>
+
+    <div class="container">
+        <form action="#" method="GET">
+            Name:<input type="text" name="name"><br>
+            Email:<input type="email" required name="email"><br>
+            Password: <input type="password" required min="5" name="password"><br>
+            BirthDate: <input type="date" name="birthday"><br>
+
+            <!-- Radio Button -->
+            Choose a career: <br>
+                    <input type="radio" name="career" value="WEBD"> Web Development <br>
+                    <input type="radio" name="career" value="ML/AI"> Ml/AI <br>
+                    <input type="radio" name="career" value="DataScience"> Data Science <br>
+
+            <!-- Checkbox -->
+            Choose languages: <br>
+                <input type="checkbox" name="c" >C/C++ <br>
+                <input type="checkbox" name="python" > Python <br>
+                <input type="checkbox" name="java" > Java <br>
+                <input type="checkbox" name="Javascript" > Javascript <br>
+
+            <!-- DropDown -->
+            Learning Method: <br>
+                <select name="learning-method">
+                    <option value="self">Self taught</option>
+                    <option value="YouTube" >YouTube Tutorials</option>
+                    <option value="courses" >Udemy/Udacity courses</option>
+                    <option  value="BootCamp">Bootcamp</option>
+                </select> <br> <br> <hr>
+
+               <!-- Submission  -->
+               <input type="submit" value="SUBMIT">
+               <input type="reset" value="RESET"><br>
+        </form>
+    </div>
+    
+</body>
+</html>
