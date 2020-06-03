@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CardList from './components/card-list/card-list.component';
 import SearchBox from './components/search-box/search-box.component';
 import './App.css';
+import ErrorBoundary from "./components/ErrorBoundary";
 
 class App extends Component {
   constructor(){
@@ -31,7 +32,10 @@ class App extends Component {
         <SearchBox 
           placeholder="Search Monster"
           handleChange={e => this.setState({searchField: e.target.value})} />
-        <CardList monsters={FiltredMonstered} />
+        <ErrorBoundary>
+            <CardList monsters={FiltredMonstered} />
+        </ErrorBoundary>
+        
       </div>
     )
   }
