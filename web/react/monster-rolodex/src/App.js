@@ -3,35 +3,51 @@ import CardList from './components/card-list/card-list.component';
 import SearchBox from './components/search-box/search-box.component';
 import './App.css';
 import ErrorBoundary from "./components/ErrorBoundary";
+import { connect } from 'react-redux';
+import { setSearchField, requestRobots } from './action';
+
+const mapStateToProps = state => {
+  return {
+    searchField: state.searchRobots.searchField,
+    robots: state.requestRobots.robots,
+    isPending: state.requestRobots.isPending,
+    error: state.requestRobots.error
+    
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onSearchField: (event) => dispatch(setSearchField(event.target.value)),
+    onRequestRobots: () => dispatch(requestRobots())
+  }
+}
+
+
 
 class App extends Component {
-  constructor(){
-    super();
-    this.state = {
-      monsters:[],
-      searchField: '',
-    }
-  }
+ 
   //component LifeCycle
   componentDidMount(){
-    fetch('https://jsonplaceholder.typicode.com/users')  // Fetch Returns a promise
-    .then(response => response.json())                 // Converts the promise into a JSON format
-    .then(user => this.setState({monsters: user}))                    // Now it is converted into a usable data format for our project let's save it in monster array
+    this.props.onRequestRobots();                  // Now it is converted into a usable data format for our project let's save it in monster array
   };
   
 
   render() {
-    const { monsters, searchField } = this.state;
-    const FiltredMonstered = monsters.filter(monster => 
+    
+    const { searchField, onSearchField , robots , isPending } = this.props;
+    const FiltredMonstered = robots.filter(robot => 
         
-      monster.name.toLowerCase().includes(searchField.toLowerCase()))
+      robot.name.toLowerCase().includes(searchField.toLowerCase()))
 
-    return (
+    return isPending ? 
+      <h1>Loading....</h1> :
+    (
       <div className="App">
         <p> Monster Rolodex</p>
         <SearchBox 
-          placeholder="Search Monster"
-          handleChange={e => this.setState({searchField: e.target.value})} />
+          placeholder="Search Robots"
+          handleChange= {onSearchField}/>
         <ErrorBoundary>
             <CardList monsters={FiltredMonstered} />
         </ErrorBoundary>
@@ -41,4 +57,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect( mapStateToProps, mapDispatchToProps )(App);
