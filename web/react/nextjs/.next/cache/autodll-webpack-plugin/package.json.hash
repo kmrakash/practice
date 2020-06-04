@@ -1,0 +1,1 @@
+{"name":"nextjs","version":"1.0.0","description":"Setting Up Next Js with React","main":"index.js","scripts":{"dev":"next","build":"next build","start":"next start"},"keywords":[],"author":{"name":"Akash Kumar"},"license":"ISC","dependencies":{"next":"^9.4.4","react":"^16.13.1","react-dom":"^16.13.1"},"readme":"ERROR: No README data found!","_id":"nextjs@1.0.0"}
