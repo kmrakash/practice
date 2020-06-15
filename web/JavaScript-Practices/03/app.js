@@ -47,8 +47,11 @@ const prev = () => {
     currentItem--
 };
 const next = () => {
-  if (currentItem < reviews.length)
-    currentItem++
+
+  currentItem++
+  if (currentItem > reviews.length - 1) {
+    currentItem--;
+  }
 };
 
 const random = () => {
